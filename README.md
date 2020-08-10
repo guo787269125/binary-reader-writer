@@ -1,4 +1,7 @@
 # Binary reader-writer
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b0b525a560434777ba85c7ecca863ad3)](https://app.codacy.com/manual/iN1PE/binary-reader-writer?utm_source=github.com&utm_medium=referral&utm_content=iN1PE/binary-reader-writer&utm_campaign=Badge_Grade_Dashboard)
+
 C++17 header-only helper class for reading & writing binary data into a std::vector container.
 
 ## Working with primitives
