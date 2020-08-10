@@ -48,14 +48,10 @@ class buffer {
 
 		if (write_swap_endianness) swap_endianess<T>(&v);
 
-		std::uint8_t* data = (std::uint8_t*) &v;
+		buff.resize(buff.size() + size);
+		std::memcpy(buff.data() + index, (std::uint8_t*) &v, size);
 
-		buff.reserve(buff.size() + size);
-
-		for (std::size_t i = 0; i < size; ++i) {
-			buff.push_back(data[i]);
-			index++;
-		}
+		index += size;
 	}
 
 	template <typename T>
@@ -63,8 +59,8 @@ class buffer {
 		const std::size_t size = v.size() + 1;
 
 		buff.resize(buff.size() + size);
-
 		std::memcpy(buff.data() + index, v.data(), size);
+
 		index += size;
 	}
 
