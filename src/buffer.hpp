@@ -27,10 +27,28 @@ class buffer {
 	struct is_map_type<std::map<K, V>> : std::true_type {};
 
 	template <typename T>
+	void swap_endianess(T* u) {
+		static_assert (CHAR_BIT == 8, "CHAR_BIT != 8");
+
+		union {
+			T u;
+			unsigned char u8[sizeof(T)];
+		} source, dest;
+
+		source.u = *u;
+
+		for (size_t k = 0; k < sizeof(T); k++) dest.u8[k] = source.u8[sizeof(T) - k - 1];
+
+		*u = dest.u;
+	}
+
+	template <typename T>
 	void write_trivial(T v) noexcept {
 		const std::size_t size = sizeof(T);
 
-		std::uint8_t* data = (std::uint8_t*) & v;
+		if (write_swap_endianness) swap_endianess<T>(&v);
+
+		std::uint8_t* data = (std::uint8_t*) &v;
 
 		buff.reserve(buff.size() + size);
 
@@ -76,6 +94,8 @@ class buffer {
 		std::memcpy(&result, buff.data() + index, size);
 		index += size;
 
+		if (read_swap_endianness) swap_endianess<T>(&result);
+
 		return result;
 	}
 
@@ -119,6 +139,8 @@ class buffer {
 	}
 public:
 	std::size_t index = 0;
+	bool write_swap_endianness = false;
+	bool read_swap_endianness = false;
 
 	buffer() = default;
 
