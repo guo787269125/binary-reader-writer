@@ -108,4 +108,21 @@ int main() {
 }
 ```
 
+##### Working with files
+```cpp
+#include "buffer.hpp"
+
+int main() {
+  file_buffer buff;
+  
+  //loads a buffer from a file
+  buff.load("content.txt");
+  
+  //file_buffer extends buffer so you can do anything with it that a buffer can do.
+ 
+ //save the buffer to a file
+ buff.save("content.txt");
+}
+```
+
 Originally inspired from: [https://github.com/m-byte918/Binary-Reader-Writer](https://github.com/m-byte918/Binary-Reader-Writer).
