@@ -1,7 +1,7 @@
 # Binary reader-writer
 C++17 header-only helper class for reading & writing binary data into a std::vector container.
 
-##### Working with primitives:
+## Working with primitives:
 ```cpp
 #include "buffer.hpp"
 
@@ -37,7 +37,7 @@ int main() {
 }
 ```
 
-##### Working with strings & containers:
+## Working with strings & containers:
 ```cpp
 #include "buffer.hpp"
 
@@ -94,7 +94,7 @@ int main() {
 }
 ```
 
-##### Working with endianness
+## Working with endianness
 
 ```cpp
 #include "buffer.hpp"
@@ -108,7 +108,7 @@ int main() {
 }
 ```
 
-##### Working with files
+## Working with files
 ```cpp
 #include "buffer.hpp"
 
