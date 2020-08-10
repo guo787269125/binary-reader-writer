@@ -140,9 +140,7 @@ public:
 
 	buffer() = default;
 
-	buffer(const std::vector<uint8_t>& nbuff) {
-		buff = nbuff;
-	}
+	buffer(const std::vector<uint8_t>& nbuff) : buff(nbuff) {}
 
 	void reset() {
 		index = 0;
